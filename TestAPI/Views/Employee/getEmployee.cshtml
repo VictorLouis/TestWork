@@ -1,0 +1,28 @@
+﻿@model TestAPI.Models.EmployeeModel 
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<div class="container">
+
+    <div class="col-xs-12 col-md-8">
+    @Html.DisplayFor(modelItem => Model.id)
+    </div> 
+    <div class="col-xs-12 col-md-8">
+        @Html.DisplayFor(modelItem => Model.name)
+    </div> 
+    <div class="col-xs-12 col-md-8">
+        @Html.DisplayFor(modelItem => Model.contractTypeName)
+    </div> 
+    <div class="col-xs-12 col-md-8">
+        @Html.DisplayFor(modelItem => Model.annualSalary)
+    </div> 
+</div>

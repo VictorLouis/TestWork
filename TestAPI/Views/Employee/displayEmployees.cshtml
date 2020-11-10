@@ -1,0 +1,172 @@
+﻿@model IEnumerable<TestAPI.DTO.EmployeeDTO>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+    .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+        .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg .tg-gjj4 {
+            background-color: #dae8fc;
+            color: #6200c9;
+            font-weight: bold;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .tg .tg-nq57 {
+            background-color: #dae8fc;
+            border-color: inherit;
+            color: #6200c9;
+            font-weight: bold;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .tg .tg-0lax {
+            text-align: left;
+            vertical-align: top;
+        }
+
+        * {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <form class="example" style="margin:auto;max-width:300px">
+        <input type="text" placeholder="Search.." id="searchbar">
+        <button id="button"><i class="fa fa-search"></i></button>
+    </form>
+
+    <table class="tg">
+        <thead>
+            <tr>
+                <th class="tg-nq57">Id</th>
+                <th class="tg-nq57">Name</th>
+                <th class="tg-nq57">Type</th>
+                <th class="tg-nq57">RoleID</th>
+                <th class="tg-nq57">RoleName</th>
+                <th class="tg-nq57">RoleDesc</th>
+                <th class="tg-nq57">Hourly</th>
+                <th class="tg-nq57">Monthly</th>
+                <th class="tg-gjj4">Annualy</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.contractTypeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roleId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roleName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roleDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hourlySalary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.monthlySalary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.annualSalary)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+</table>
+</body>
+</html>
+
+<script>
+
+    $(document).ready(function () {
+        $('#button').click(function () {
+            var currentObject = $('#searchbar').val;
+            console.log(currentObject);
+            $.get('@Url.Action("getEmployee", "Employee")', { id: currentObject });
+        });
+    });
+</script>
+
+
